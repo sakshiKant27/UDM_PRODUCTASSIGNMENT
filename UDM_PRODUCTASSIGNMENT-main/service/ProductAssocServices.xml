@@ -1,0 +1,15 @@
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
+    <service verb="fetch" noun="ProductAssoc">
+        <in-parameters>
+            <parameter name="productId" entity-name="moqui.productassocciation.ProductAssoc"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="productAssocList" type="List" />
+        </out-parameters>
+        <actions>
+            <entity-find entity-name="moqui.productassocciation.ProductAssoc" list="productAssocList" >
+                <econdition field-name="productId" />
+            </entity-find>
+        </actions>
+    </service>
+</services>

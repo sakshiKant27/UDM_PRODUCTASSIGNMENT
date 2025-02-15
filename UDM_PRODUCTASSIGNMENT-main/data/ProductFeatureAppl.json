@@ -1,0 +1,45 @@
+[
+  {"_dataType": "demo"},
+  {
+    "_entity": "moqui.productfeatureappl.ProductFeatureAppl",
+    "productId": "PROD10000",
+    "productFeatureId": "128GB",
+    "fromDate": "2023-06-01",
+    "applTypeEnumId": "SELECTABLE_FEATURE"
+  },
+  {
+    "_entity": "moqui.productfeatureappl.ProductFeatureAppl",
+    "productId": "PROD10000",
+    "productFeatureId": "256GB",
+    "applTypeEnumId": "SELECTABLE_FEATURE",
+    "fromDate": "2023-06-01"
+  },
+  {
+    "_entity": "moqui.productfeatureappl.ProductFeatureAppl",
+    "productId": "PROD10001",
+    "productFeatureId": "128GB",
+    "applTypeEnumId": "STANDARD_FEATURE",
+    "fromDate": "2023-06-01"
+  },
+  {
+    "_entity": "moqui.productfeatureappl.ProductFeatureAppl",
+    "productId": "PROD10002",
+    "productFeatureId": "256GB",
+    "applTypeEnumId": "STANDARD_FEATURE",
+    "fromDate": "2023-08-01"
+  },
+  {
+    "_entity": "moqui.productfeatureappl.ProductFeatureAppl",
+    "productId": "PROD20000",
+    "productFeatureId": "BLACK",
+    "applTypeEnumId": "STANDARD_FEATURE",
+    "fromDate": "2023-09-01"
+  },
+  {
+    "_entity": "moqui.productfeatureappl.ProductFeatureAppl",
+    "productId": "PROD20001",
+    "productFeatureId": "BLACK",
+    "applTypeEnumId": "STANDARD_FEATURE",
+    "fromDate": "2023-09-01"
+  }
+]

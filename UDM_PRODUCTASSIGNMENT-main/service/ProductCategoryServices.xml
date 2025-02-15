@@ -1,0 +1,30 @@
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
+    <service verb="fetch" noun="ProductCategory">
+        <in-parameters>
+            <parameter name="productCategoryId" entity-name="moqui.productcategory.ProductCategory"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="productCategoryList" type="List" />
+        </out-parameters>
+        <actions>
+            <entity-find entity-name="moqui.productcategory.ProductCategory" list="productCategoryList" >
+                <econdition field-name="productCategoryId" />
+            </entity-find>
+        </actions>
+    </service>
+
+
+<service verb="fetch" noun="ProductCategoryMember">
+<in-parameters>
+    <parameter name="productCategoryId" entity-name="moqui.productcategorymember.ProductCategoryMember"/>
+</in-parameters>
+<out-parameters>
+    <parameter name="productCategoryMemberList" type="List"/>
+</out-parameters>
+<actions>
+    <entity-find entity-name="moqui.productcategorymember.ProductCategoryMember" list="productCategoryMemberList">
+        <econdition field-name="productCategoryId" />
+    </entity-find>
+</actions>
+</service>
+</services>

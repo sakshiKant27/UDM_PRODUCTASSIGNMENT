@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-3.xsd"
+            require-authentication="anonymous-all"  default-menu-title="productScreen">
+        <transition name="createProduct" >
+            <service-call name="create#moqui.product.Product"/>
+            <default-response url="."/>
+        </transition>
+    <transition name="updateProduct" >
+        <service-call name="update#moqui.product.Product"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="deleteProduct" >
+        <service-call name="delete#moqui.product.Product"/>
+        <default-response url="."/>
+    </transition>
+        <transition name="createProductContent" >
+            <service-call name="create#moqui.productcontent.ProductContent"/>
+            <default-response url="."/>
+        </transition>
+    <transition name="deleteProductContent" >
+        <service-call name="delete#moqui.productcontent.ProductContent"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="updateProductContent" >
+        <service-call name="update#moqui.productcontent.ProductContent"/>
+        <default-response url="."/>
+    </transition>
+        <transition name="createProductPrice" >
+            <service-call name="create#moqui.productprice.ProductPrice"/>
+            <default-response url="."/>
+        </transition>
+    <transition name="deleteProductPrice" >
+        <service-call name="delete#moqui.productprice.ProductPrice"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="updateProductPrice" >
+        <service-call name="update#moqui.productprice.ProductPrice"/>
+        <default-response url="."/>
+    </transition>
+
+    <transition name="createProductDimension" >
+            <service-call name="create#moqui.productdimension.ProductDimension"/>
+            <default-response url="."/>
+    </transition>
+    <transition name="updateProductDimension" >
+        <service-call name="update#moqui.productdimension.ProductDimension"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="deleteProductDimension" >
+        <service-call name="delete#moqui.productdimension.ProductDimension"/>
+        <default-response url="."/>
+    </transition>
+
+    <transition name="createProductAssoc" >
+        <service-call name="create#moqui.productassocciation.ProductAssoc"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="updateProductAssoc" >
+        <service-call name="update#moqui.productassocciation.ProductAssoc"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="deleteProductAssoc" >
+        <service-call name="delete#moqui.productassocciation.ProductAssoc"/>
+        <default-response url="."/>
+    </transition>
+
+    <transition name="createProductFeature">
+        <service-call name="create#moqui.productfeature.ProductFeature"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="updateProductFeature">
+        <service-call name="update#moqui.productfeature.ProductFeature"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="deleteProductFeature">
+        <service-call name="delete#moqui.productfeature.ProductFeature"/>
+        <default-response url="."/>
+    </transition>
+
+    <transition name="createProductFeatureAppl" >
+        <service-call name="create#moqui.productfeatureappl.ProductFeatureAppl"/>
+        <default-response url="."/>
+    </transition>
+
+    <transition name="updateProductFeatureAppl" >
+        <service-call name="update#moqui.productfeatureappl.ProductFeatureAppl"/>
+        <default-response url="."/>
+    </transition>
+
+    <transition name="deleteProductFeatureAppl" >
+        <service-call name="delete#moqui.productfeatureappl.ProductFeatureAppl"/>
+        <default-response url="."/>
+    </transition>
+
+    <transition name="createProductCategory" >
+        <service-call name="create#moqui.productcategory.ProductCategory"/>
+        <default-response url="."/>
+    </transition>
+
+    <transition name="updateProductCategory" >
+        <service-call name="update#moqui.productcategory.ProductCategory"/>
+        <default-response url="."/>
+    </transition>
+
+    <transition name="deleteProductCategory" >
+        <service-call name="delete#moqui.productcategory.ProductCategory"/>
+        <default-response url="."/>
+    </transition>
+
+    <transition name="updateProductCategoryMember" >
+        <service-call name="update#moqui.productcategorymember.ProductCategoryMember"/>
+        <default-response url="."/>
+    </transition>
+
+    <transition name="deleteProductCategoryMember" >
+        <service-call name="delete#moqui.productcategorymember.ProductCategoryMember"/>
+        <default-response url="."/>
+    </transition>
+
+    <transition name="createproductCategoryMember" >
+        <service-call name="create#moqui.productcategorymember.ProductCategoryMember"/>
+        <default-response url="."/>
+    </transition>
+    <actions>
+<!--        <entity-find entity-name="moqui.product.Product" list="productList" >-->
+<!--            <econdition field-name="productId" />-->
+<!--        </entity-find>-->
+        <service-call name="ProductServices.fetch#Product" in-map="[productId:productId]" out-map="context"/>
+        <service-call name="ProductContentServices.fetch#ProductContent" in-map="[productContentId : productContentId]" out-map="context"/>
+        <service-call name="ProductPriceServices.fetch#ProductPrice" in-map="[productPriceId : productPriceId]" out-map="context"/>
+        <service-call name="ProductDimensionServices.fetch#ProductDimension" in-map="[productId : productId]" out-map="context"/>
+        <service-call name="ProductAssocServices.fetch#ProductAssoc" in-map="[productId : productId]" out-map="context"/>
+        <service-call name="ProductFeatureServices.fetch#ProductFeature" in-map="[productFeatureId : productFeatureId]" out-map="context"/>
+        <service-call name="ProductFeatureServices.fetch#ProductFeatureAppl" in-map="[productFeatureId : productFeatureId]" out-map="context"/>
+        <service-call name="ProductCategoryServices.fetch#ProductCategory" in-map="[productCategoryId : productCategoryId]" out-map="context"/>
+        <service-call name="ProductCategoryServices.fetch#ProductCategoryMember" in-map="[productCategoryId : productCategoryId]" out-map="context"/>
+    </actions>
+
+
+        <widgets>
+            <container-box>
+                <box-header>
+                    <label text="Product Operation"/>
+                </box-header>
+                <box-body-nopad>
+                    <container-dialog id="createProduct" button-text="Create Product">
+                        <form-single name ="CreateProduct" transition="createProduct">
+                            <auto-fields-entity entity-name="Product" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Create"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+                    <container-dialog id="updateProduct" button-text="Update Product">
+                    <form-single name ="UpdateProduct" transition="updateProduct">
+                        <auto-fields-entity entity-name="Product" field-type="edit"/>
+                        <field name="submitButton">
+                            <default-field title="Update"><submit/></default-field>
+                        </field>
+                    </form-single>
+                </container-dialog>
+                    <container-dialog id="deleteProduct" button-text="delete Product">
+                        <form-single name ="Product" transition="deleteProduct">
+                            <auto-fields-entity entity-name="Product" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Delete"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+<!--                <container-dialog id="GetProduct" button-text="Get Product">-->
+                    <form-single name ="GetProduct" transition=".">
+                        <field name="productId">
+                            <default-field><text-line/></default-field>
+                        </field>
+                        <field name="getProduct">
+                            <default-field>
+                                <submit/>
+                            </default-field>
+                        </field>
+                    </form-single>
+                    <form-list name="productList"  list="productList">
+                        <field name="productId">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                        <field name="productName">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                        <field name="productTypeEnumId">
+                            <default-field><display/></default-field>
+                        </field>
+                        <field name="isVariant">
+                            <default-field><display/></default-field>
+                        </field>
+                        <field name="isVirtual">
+                            <default-field><display/></default-field>
+                        </field>
+                        <field name="fromDate">
+                            <default-field><display/></default-field>
+                        </field>
+                    </form-list>
+<!--                </container-dialog>-->
+
+<!--                    <subscreen name="displayProductDetailsSubscreen" visible="${product.productId != null}">-->
+<!--                        <widgets>-->
+<!--                            <table>-->
+<!--                                <row>-->
+<!--                                    &lt;!&ndash; Display Product ID &ndash;&gt;-->
+<!--                                    <field title="Product ID">-->
+<!--                                        <text>${product.productId != null ? product.productId : 'No product found'}</text>-->
+<!--                                    </field>-->
+<!--                                    &lt;!&ndash; Display Product Name &ndash;&gt;-->
+<!--                                    <field title="Product Name">-->
+<!--                                        <text>${product.productName != null ? product.productName : 'No product found'}</text>-->
+<!--                                    </field>-->
+<!--                                    &lt;!&ndash; Display Product Description &ndash;&gt;-->
+<!--                                    <field title="Description">-->
+<!--                                        <text>${product.description != null ? product.description : 'No product found'}</text>-->
+<!--                                    </field>-->
+<!--                                </row>-->
+<!--                            </table>-->
+<!--                        </widgets>-->
+<!--                    </subscreen>-->
+
+                </box-body-nopad>
+            </container-box>
+
+
+            <container-box>
+                <box-header>
+                    <label text="Product Content Operation"/>
+                </box-header>
+                <box-body-nopad>
+                    <container-dialog id="createProductContent" button-text="Create ProductContent">
+                        <form-single name ="ProductContentCreate" transition="createProductContent">
+                            <auto-fields-entity entity-name="ProductContent" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Create"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <container-dialog id="updateProductContent" button-text="Update ProductContent">
+                        <form-single name ="ProductContentUpadte" transition="upadteProductContent">
+                            <auto-fields-entity entity-name="ProductContent" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Update"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <container-dialog id="deleteProductContent" button-text="Delete ProductContent">
+                        <form-single name ="ProductContentDelete" transition="deleteProductContent">
+                            <auto-fields-entity entity-name="ProductContent" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Delete"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <form-single name="GetProductContent" transition=".">
+                        <field name="productContentId">
+                            <default-field>
+                                <text-line/>
+                            </default-field>
+                        </field>
+
+                    </form-single>
+                    <form-list name="ProductContentList" list="productContentList">
+                        <field name="productContentId">
+                            <display/>
+                        </field>
+                        <field name="productId">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                        <field name="productContentTypeEnumId">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                        <field name="contentLocation">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                    </form-list>
+                </box-body-nopad>
+            </container-box>
+
+
+
+            <container-box>
+                <box-header>
+                    <label text="Product Price Operation"/>
+                </box-header>
+                <box-body-nopad>
+                    <container-dialog id="createProductPrice" button-text="Create ProductPrice">
+                        <form-single name ="ProductPrice" transition="createProductPrice">
+                            <auto-fields-entity entity-name="ProductPrice" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Create"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+                    <container-dialog id="updateProductPrice" button-text="Update ProductPrice">
+                        <form-single name ="ProductPriceUpdate" transition="updateProductPrice">
+                            <auto-fields-entity entity-name="ProductPrice" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Update"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <container-dialog id="deleteProductPrice" button-text="Delete ProductPrice">
+                        <form-single name ="ProductPricedelete" transition="deleteProductPrice">
+                            <auto-fields-entity entity-name="ProductPrice" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Delete"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <form-single name="GetProductPrice" transition=".">
+                        <field name="productPriceId">
+                            <default-field><text-line/></default-field>
+                        </field>
+                        <field name="getProductPrice">
+                            <default-field>
+                                <submit/>
+                            </default-field>
+                        </field>
+                    </form-single>
+                    <form-list name="ProductPriceList" list="productPriceList">
+                    <field name="productPriceId">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="productId">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="priceTypeEnumId">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="productName">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="fromDate">
+                    <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                        <field name="thruDate">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+
+                    </form-list>
+                </box-body-nopad>
+            </container-box>
+
+            <container-box>
+                <box-header>
+                    <label text="Product Dimension"/>
+                </box-header>
+                <box-body-nopad>
+                    <container-dialog id="createProductDimension" button-text="Create ProductDimension">
+                        <form-single name ="ProductDimensionCreate" transition="createProductDimension">
+                            <auto-fields-entity entity-name="ProductDimension" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Create"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <container-dialog id="updateProductDimension" button-text="Update ProductDimension">
+                        <form-single name ="ProductDimensionUpdate" transition="updateProductDimension">
+                            <auto-fields-entity entity-name="ProductDimension" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Update"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <container-dialog id="deleteProductDimension" button-text="Delete ProductDimension">
+                        <form-single name ="ProductDimensiondelete" transition="deleteProductDimension">
+                            <auto-fields-entity entity-name="ProductDimension" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Delete"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+                    <form-single name="GetProductDimension" transition=".">
+                        <field name="productId">
+                            <default-field><text-line/></default-field>
+                        </field>
+                        <field name="getProductDimension">
+                            <default-field>
+                                <submit/>
+                            </default-field>
+                        </field>
+                    </form-single>
+                    <form-list name="ProductDimensionList" list="productDimensionList">
+                        <field name="productId">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                        <field name="dimensionTypeEnumId">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                        <field name="value">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                        <field name="valueUomId">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                    </form-list>
+                </box-body-nopad>
+            </container-box>
+
+            <container-box>
+                <box-header>
+                    <label text="ProductAssoc Operation"/>
+                </box-header>
+                <box-body-nopad>
+                    <container-dialog id="createProductAssoc" button-text="Create ProductAssoc">
+                        <form-single name ="CreateProductAssoc" transition="createProductAssoc">
+                            <auto-fields-entity entity-name="ProductAssoc" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Create"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <container-dialog id="updateProductAssoc" button-text="Upadte ProductAssoc">
+                        <form-single name ="UpdateProductAssoc" transition="upadteProductAssoc">
+                            <auto-fields-entity entity-name="ProductAssoc" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Update"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <container-dialog id="deleteProductAssoc" button-text="Delete ProductAssoc">
+                        <form-single name ="DeleteProductAssoc" transition="deleteProductAssoc">
+                            <auto-fields-entity entity-name="ProductAssoc" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Delete"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <form-single name="GetProductAssoc" transition=".">
+                        <field name="productId">
+                            <default-field><text-line/></default-field>
+                        </field>
+                        <field name="getProductAssoc">
+                            <default-field>
+                                <submit/>
+                            </default-field>
+                        </field>
+                    </form-single>
+                    <form-list name="ProductAssocList" list="productAssocList">
+                        <field name="productId">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                        <field name="toProductId">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                        <field name="productAssocTypeEnumId">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                        <field name="fromdate">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                        <field name="thrudate">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                    </form-list>
+                </box-body-nopad>
+            </container-box>
+            <container-box>
+                <box-header>
+                    <label text="Product Feature"/>
+                </box-header>
+                <box-body-nopad>
+                    <container-dialog id="createProductFeature" button-text="Create ProductFeature">
+                        <form-single name ="CreateProductFeature" transition="createProductFeature">
+                            <auto-fields-entity entity-name="ProductFeature" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Create"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <container-dialog id="updateProductFeature" button-text="Upadte ProductFeature">
+                        <form-single name ="UpdateProductFeature" transition="upadteProductFeature">
+                            <auto-fields-entity entity-name="ProductFeature" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Update"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <container-dialog id="deleteProductFeature" button-text="Delete ProductFeature">
+                        <form-single name ="DeleteProductFeature" transition="deleteProductFeature">
+                            <auto-fields-entity entity-name="ProductFeature" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Delete"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <form-single name="GetProductFeature" transition=".">
+                        <field name="productFeatureId">
+                            <default-field><text-line/></default-field>
+                        </field>
+                        <field name="getProductFeature">
+                            <default-field>
+                                <submit/>
+                            </default-field>
+                        </field>
+                    </form-single>
+                    <form-list name="ProductFeatureList" list="productFeatureList">
+                        <field name="productFeatureId">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                        <field name="productFeatureTypeEnumId">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                    </form-list>
+
+                </box-body-nopad>
+            </container-box>
+
+            <container-box>
+                <box-header>
+                    <label text="Product FeatureAppl"/>
+                </box-header>
+                <box-body-nopad>
+                    <container-dialog id="createProductFeatureAppl" button-text="Create ProductFeatureAppl">
+                        <form-single name ="CreateProductFeatureAppl" transition="createProductFeatureAppl">
+                            <auto-fields-entity entity-name="ProductFeatureAppl" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Create"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <container-dialog id="updateProductFeatureAppl" button-text="Upadte ProductFeatureAppl">
+                        <form-single name ="UpadteProductFeatureAppl" transition="upadteProductFeatureAppl">
+                            <auto-fields-entity entity-name="ProductFeatureAppl" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Update"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <container-dialog id="deleteProductFeatureAppl" button-text="Delete ProductFeatureAppl">
+                        <form-single name ="DeleteProductFeatureAppl" transition="deleteProductFeatureAppl">
+                            <auto-fields-entity entity-name="ProductFeatureAppl" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Delete"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <form-single name="GetProductApplFeature" transition=".">
+                        <field name="productFeatureId">
+                            <default-field><text-line/></default-field>
+                        </field>
+                        <field name="getProductFeatureAppl">
+                            <default-field>
+                                <submit/>
+                            </default-field>
+                        </field>
+                    </form-single>
+                    <form-list name="ProductFeatureApplList" list="productFeatureApplList">
+                        <field name="productId">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                        <field name="productFeatureId">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                        <field name="fromDate">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                        <field name="applTypeEnumId">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                    </form-list>
+                </box-body-nopad>
+            </container-box>
+
+            <container-box>
+                <box-header>
+                    <label text="Product Category"/>
+                </box-header>
+                <box-body-nopad>
+                    <container-dialog id="createProductCategory" button-text="Create ProductCategory">
+                        <form-single name ="CreateProductCategory" transition="createProductCategory">
+                            <auto-fields-entity entity-name="ProductCategory" field-type="edit"/>
+<!--                            <field name="Create">-->
+<!--                                <default-field ><submit/></default-field>-->
+<!--                            </field>-->
+                            <field name="Create">
+                                <default-field ><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <container-dialog id="updateProductCategory" button-text="Upadte ProductCategory">
+                        <form-single name ="UpdateProductCategory" transition="upadteProductCategory">
+                            <auto-fields-entity entity-name="ProductCategory" field-type="edit"/>
+                            <field name="Update">
+                                <default-field title="Update"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <container-dialog id="deleteProductCategory" button-text="Delete ProductCategory">
+                        <form-single name ="DeleteProductCategory" transition="deleteProductCategory">
+                            <auto-fields-entity entity-name="ProductCategory" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Delete"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <form-single name="GetProductCategory" transition=".">
+                        <field name="productCategoryId">
+                            <default-field><text-line/></default-field>
+                        </field>
+                        <field name="getProductCategory">
+                            <default-field>
+                                <submit/>
+                            </default-field>
+                        </field>
+                    </form-single>
+                    <form-list name="ProductCategoryList" list="productCategoryList">
+                        <field name="productCategoryId">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                        <field name="productCategoryTypeEnumId">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                        <field name="categoryName">
+                            <default-field>
+                                <display/>
+                            </default-field>
+                        </field>
+                    </form-list>
+                </box-body-nopad>
+            </container-box>
+
+            <container-box>
+                <box-header>
+                    <label text="Product CategoryMember"/>
+                </box-header>
+                <box-body-nopad>
+                    <container-dialog id="createProductCategoryMember" button-text="Create ProductCategoryMember">
+                        <form-single name ="CreateProductCategoryMember" transition="createProductCategoryMember">
+                            <auto-fields-entity entity-name="ProductCategoryMember" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Create"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <container-dialog id="updateProductCategoryMember" button-text="Update ProductCategoryMember">
+                        <form-single name ="UpadateProductCategoryMember" transition="upadteProductCategoryMember">
+                            <auto-fields-entity entity-name="ProductCategoryMember" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Update"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+                    <container-dialog id="deleteProductCategoryMember" button-text="Delete ProductCategoryMember">
+                        <form-single name ="DeleteProductCategoryMember" transition="deleteProductCategoryMember">
+                            <auto-fields-entity entity-name="ProductCategoryMember" field-type="edit"/>
+                            <field name="submitButton">
+                                <default-field title="Delete"><submit/></default-field>
+                            </field>
+                        </form-single>
+                    </container-dialog>
+
+
+        <form-single name="GetProductCategoryMember" transition=".">
+            <field name="productCategoryId">
+                <default-field><text-line/></default-field>
+            </field>
+            <field name="getProductCategoryMember">
+                <default-field>
+                    <submit/>
+                </default-field>
+            </field>
+        </form-single>
+        <form-list name="ProductCategoryMemberList" list="productCategoryMemberList">
+            <field name="productCategoryId">
+                <default-field>
+                    <display/>
+                </default-field>
+            </field>
+            <field name="productId">
+                <default-field>
+                    <display/>
+                </default-field>
+            </field>
+            <field name="fromDate">
+                <default-field>
+                    <display/>
+                </default-field>
+            </field>
+          </form-list>
+
+            </box-body-nopad>
+            </container-box>
+            </widgets>
+    </screen>

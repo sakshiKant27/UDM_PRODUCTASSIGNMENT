@@ -1,0 +1,18 @@
+[
+  {"_dataType": "demo"},
+  {
+    "_entity": "moqui.productfeature.ProductFeature",
+    "productFeatureId": "128BG",
+    "productFeatureTypeEnumId": "MEMORY"
+  },
+  {
+    "_entity": "moqui.productfeature.ProductFeature",
+    "productFeatureId": "256BG",
+    "productFeatureTypeEnumId": "MEMORY"
+  },
+  {
+    "_entity": "moqui.productfeature.ProductFeature",
+    "productFeatureId": "BLACK",
+    "productFeatureTypeEnumId": "COLOR"
+  }
+]

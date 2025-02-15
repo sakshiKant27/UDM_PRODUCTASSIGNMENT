@@ -1,0 +1,9 @@
+[
+  {"_dataType": "demo"},
+  {
+    "_entity": "moqui.productcategorymember.ProductCategoryMember",
+    "productId": "PROD10000",
+    "productCategoryId": "BROWSE_ROOT",
+    "fromDate": "2023-01-01"
+  }
+]
